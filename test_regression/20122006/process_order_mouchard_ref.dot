@@ -1,0 +1,13 @@
+digraph process_order {
+b_eval1 -> d_eval3
+d_eval3 -> d_eval2
+d_eval2 -> g_eval2
+g_eval2 -> d_eval3
+d_eval3 -> e_eval1
+e_eval1 -> f_eval1
+f_eval1 -> g_eval1
+g_eval1 -> b_eval2
+b_eval2 -> h_eval1
+h_eval1 -> c_eval1
+c_eval1 -> d_eval1
+}

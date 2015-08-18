@@ -1,0 +1,44 @@
+#ifndef __SYSTEMC_HEADER
+#define __SYSTEMC_HEADER
+
+#define SYSTEMCASS_SPECIFIC
+//#define SOCVIEW // we can't define SOCVIEW macro because we don't support
+//some features like "debug" function
+#define STATESAVER_SYSTEM
+#define NONAME_RENAME
+#define PORT_DEPENDANCIES_ENABLED
+
+#include "sc_fwd.h"
+
+#include "global_functions.h"
+#include "sc_nbdefs.h"
+#include "sc_ver_ext.h"
+#include "sc_module_name.h"
+#include "sc_module_ext.h"
+#include "sc_module_name.h"
+#include "module_hierarchy_ext.h"
+#include "serialization_ext.h"
+#include "sc_port_ext.h"
+#include "sc_signal.h"
+#include "sc_clock_ext.h"
+#include "sc_sensitive.h"
+
+#include "sc_time.h"
+#include "sc_unit.h"
+#include "sc_trace_ext.h"
+#include "sc_vcd_trace.h"
+#include "sc_pat_trace.h"
+
+#endif
+
+/*
+# Local Variables:
+# tab-width: 4;
+# c-basic-offset: 4;
+# c-file-offsets:((innamespace . 0)(inline-open . 0));
+# indent-tabs-mode: nil;
+# End:
+#
+# vim: filetype=cpp:expandtab:shiftwidth=4:tabstop=4:softtabstop=4
+*/
+

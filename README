@@ -1,0 +1,24 @@
+SystemCASS Installation
+=======================
+
+Please use automake/autoconf to install SystemCASS.
+SystemCASS is able to generate trace files into VCD and also the ALLIANCE
+format : PAT.
+
+PAT trace ouput
+===============
+
+PAT trace output is disable by default.
+Set the environment variable 'ALLIANCE' to ALLIANCE top directory, 
+then make again.
+
+TODO
+====
+- Fix some bugs, reported on 64 bits machines.
+- testbenches: 
+  * 15042009: in somes cases, the developper has to use "sc_signal<T>::read()"
+              method to explicitly read a sc_signal. OSCI's SystemC does not 
+              need to call explicitly this method. LRM gives no information 
+              about it.
+  * 19042005: trace file contains some useless lines about 64 bits signals.
+- simulations using OpenMP capabilities

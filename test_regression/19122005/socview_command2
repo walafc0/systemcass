@@ -1,0 +1,18 @@
+func
+run 10
+save test2_socview_10.dat
+run 10
+save test2_socview_20a.dat
+run 4
+save test2_socview_24a.dat
+restore test2_systemcass_20.dat
+run 4
+save test2_socview_24b.dat
+restore test2_socview_20a.dat
+run 4
+save test2_socview_24c.dat
+restore test2_socview_10.dat
+run 10
+save test2_socview_20b.dat
+exit
+

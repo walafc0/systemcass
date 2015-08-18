@@ -1,0 +1,11 @@
+Top level :
+s_clk, noname_0, noname_1, noname_2, noname_3, m, top_level_module
+
+Child of "m" :
+m.i_bool, m.i_int, m.i_sc_int17, m.o_int, m.o_sc_uint38, m.reg_lv8, m.reg_int, m.reg_uint, m.reg_sc_uint3, m.reg_sc_int31, m.noname_4, m.intern_module_of_moldu
+
+Child of "m.intern_module_of_moldu" :
+m.intern_module_of_moldu.noname_5
+
+Child of "top_level_module" :
+top_level_module.noname_6

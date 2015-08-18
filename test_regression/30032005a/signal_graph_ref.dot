@@ -1,0 +1,10 @@
+strict digraph signal_graph {
+edge [label=b_eval_mealy1];
+s02 -> s03;
+edge [label=a_eval_mealy1];
+s01 -> s02;
+edge [label=b_eval_mealy2];
+s04 -> s05;
+edge [label=a_eval_mealy2];
+s05 -> s06;
+}

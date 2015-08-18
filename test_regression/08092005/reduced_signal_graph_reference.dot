@@ -1,0 +1,10 @@
+strict digraph reduced_signal_graph {
+edge [label=b_f];
+noname_1 -> noname_2;
+edge [label=a_f];
+noname_0 -> noname_1;
+edge [label=b_f];
+noname_3 -> noname_4;
+edge [label=a_f];
+noname_4 -> noname_5;
+}

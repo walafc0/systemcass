@@ -1,0 +1,273 @@
+%%%%%%%%%%
+%
+%$Log: SystemCASS.tex,v $
+%Revision 1.3  2005/03/25 14:33:01  buchmann
+%Typo :
+%-  dependAncy -> dependEncy
+%
+%sc_initialize :
+%-  Use a hash table to speed up elaboration step. (x40 faster)
+%
+%Tracing :
+%-  check for modification BEFORE building bit string.
+%-  use sprintf instead std string concatenation.
+%
+%Revision 1.2  2005/02/22 11:36:58  buchmann
+%Generate correctly documentations.
+%Add special flag to disable PAT tracing support.
+%
+%Revision 1.1  2005/01/20 09:15:12  buchmann
+%add following functions to sc_uint classes :
+%- operator []
+%- range (left,right)
+%
+%support to port dependency declarations.
+%print used precompiled options in verbose mode.
+%use pedantic flag.
+%add some rules to generate documentations.
+%
+%
+%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\documentclass{report}
+\usepackage[latin1]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage{a4wide}
+\usepackage{charter}
+\usepackage{helvet}
+\usepackage{graphicx}
+\usepackage{amsmath}
+\usepackage{moreverb}
+\usepackage{longtable}
+\usepackage{calc}
+\usepackage{alltt}
+\usepackage{makeidx}
+\usepackage{xspace}
+\renewcommand{\rmdefault}{phv}
+\renewcommand{\sfdefault}{phv}
+\renewcommand{\ttdefault}{pcr}
+\newcommand{\SYSTEMCASS}{\textsc{SystemCASS}\xspace}
+\newcommand{\SYSTEMC}{\textsc{SystemC}\xspace}
+\newcommand{\SOCLIB}{\textsc{SoCLIB}\xspace}
+
+\ifx\pdfoutput\undefined
+\else
+    \pdfpagewidth  21.0cm
+    \pdfpageheight 29.7cm
+\fi
+\usepackage{hyperref}
+
+\voffset   -1in
+\hoffset   -1in
+\headheight 0pt
+\headsep    0pt
+\topmargin     25mm
+\oddsidemargin 29mm
+
+\textwidth     150mm
+\textheight    240mm
+\flushbottom
+\sloppy
+
+\tabcolsep 4pt
+\makeatletter
+\renewcommand{\section}
+   {\@startsection
+   {section}%
+   {1}%
+   {0mm}%
+   {-.5\baselineskip}%
+   {0.5\baselineskip}%
+   {\newpage\flushleft\normalfont\Large\scshape}}
+
+\renewcommand{\subsection}
+   {\@startsection
+   {subsection}%
+   {1}%
+   {0mm}%
+   {-.5\baselineskip}%
+   {0.5\baselineskip}%
+   {\flushleft\normalfont\large\scshape}}
+
+\renewcommand{\@seccntformat}[1]{{\csname the#1\endcsname}.\hspace{0.25em}}
+\makeatother
+\renewcommand{\thesection}{\arabic{section}}
+
+\renewcommand{\listinglabel}[1]{\rlap{\footnotesize\rmfamily\the#1}\hskip2em}
+
+%%%%%%%%%%%%%%%%
+%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{document}
+\thispagestyle{empty}
+~\vfill
+\begin{center}
+{\LARGE SystemCASS\\ SystemC Cycle Accurate System Simulator\\}
+\vfill
+\vfill
+%{\Large Documentation by Richard \textsc{Buchmann}}
+\vfill
+
+{\Large \today}
+
+\end{center}
+~\vfill
+
+%%%%%%%%%%
+%
+%%%%%%%%%%%%%%%%%%%%%%%%%
+\section{\SYSTEMCASS Overview}
+\label{SystemCass-overview}
+
+\SYSTEMCASS is a simulator that executes models described in \textbf{SystemC}.
+Its goal is to provide cycle precise simulation of systems build with
+hardware and software components, in order to evaluate performances
+for \emph{i.e.} hardware/software partitioning, system validation, early
+software development.
+
+An example of system is present Figure~\ref{system}.
+
+\begin{figure}[hbtp]\center\leavevmode
+\includegraphics[width=.7\textwidth,angle=270]{SystemeType}
+\caption{Typical embedded system build around VCI interfaces.}
+\label{system}
+\end{figure}
+
+The simulator simulates a \textbf{SystemC} netlist of predefined and/or
+user defined components.
+The components used to validate the methodology\cite{iceec04-buch} are a part of \SOCLIB library.
+Those models are VCI, bit and cycle accurate using the finite state machine with datapath modeling (Figure~\ref{Automate}).
+
+\begin{figure}[hbtp]\center\leavevmode
+\includegraphics[width=.6\linewidth]{Automate}
+\caption{Finite State Machine Modeling}
+\label{Automate}
+\end{figure}
+
+SystemCASS is a SystemC subset including~:
+\begin{itemize}
+\item
+core class~: sc\_module, sc\_signal, sc\_in, sc\_out, sc\_inout...
+\item
+core functions~: sc\_start, sc\_stop, sc\_simulation\_time...
+\item
+basic data types~: sc\_i[u]nt, sc\_big[u]int...
+\end{itemize}
+
+But SystemCASS doesn't include standard channels, 
+methodology-specific channels (master/slave library, verification library) 
+and elementary channels (timer, mutex, semaphore, fifo, etc.).
+
+This cycle accurate engine gives higher simulation speed 
+more suitable for embedded software development,
+and architectural exploration.
+
+%%%%%%%%%%
+%
+%%%%%%%%%%%%%%%%%%%%%%%%%
+\section{Installation}
+
+Set \textbf{SYSTEMC} environment variable to the \textbf{SystemCASS} base directory.\\
+Change the current directory to \textbf{\$(SYSTEMC)/src}.\\
+Run the Makefile.\\
+
+The distribution is as follow~:
+\begin{itemize} \itemsep=-0.8ex
+\item
+\emph{src}~: 
+Source files
+\item
+\emph{includes}~:
+Header files
+\item
+\emph{lib-linux}~:
+Debug and optimized libraries for linux distribution
+\item
+\emph{docs}~:
+Documentation
+\item
+\emph{examples}~:
+
+\begin{itemize} \itemsep=-0.8ex
+\item
+\emph{soclib\_date04}~:
+An hardware timer raises some interruptions on 4 Mips R3000 periodically.
+Whenever an interruption occurs, the application running on each CPU prints a "hello" message to its own output window.
+\item
+\emph{soclib\_spg}~:
+An specific hardware configures a DMA. The DMA copies some data into the
+a simple RAM component.
+\end{itemize}
+
+\end{itemize}
+
+%%%%%%%%%%%%%%%%%%%%%%%
+%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%ù
+\section{Simulator Execution}
+\label{debbuger-usage}
+To use SystemCASS simulator, you just need to include the SystemCASS headers
+and link to SystemCASS library.
+
+To debug, two ways are available~:
+\begin{itemize}
+\item
+link to the debug library and use a debugger.
+\item
+generate a trace file by using dedicated functions and use a VCD viewer.
+\end{itemize}
+
+%%%%%%%%%%
+%
+%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\section{Simulator Compilation}
+
+Some macro definitions are available 
+to accelerate the simulation, 
+to check the netlist, variable dependancies, the scheduling
+to help on debugging
+and so on.
+
+You need to modify the Options.def file and rebuild the libraries.
+
+\subsection{Scheduling}
+
+The best performance you can reach using \SYSTEMCASS is obtained by using
+static scheduling.
+
+\SYSTEMCASS has two ways to compute the scheduling~:
+
+\begin{itemize}
+\item
+from the static sensitivity list (default)~:
+\SYSTEMC compatibility is good
+\item
+from the port dependency graph\cite{date04-mouchard} (USE\_PORT\_DEPENDENCY defined)~:
+The component designer need to declare the port dependancies in the
+constructor.
+The signal dependency graph is complete and then it has no cycle.
+At initialization step, the engine checks sensitivity list coherence.\\
+\it{Syntax~: outPort(inPort);}\\
+DUMP\_COMBINATIONAL\_LIST2DOT definition generates some DOT files to check
+dependancies.
+\end{itemize}
+
+The generated scheduling is written in code-XXX.cc file.
+KEEP\_GENERATED\_CODE definition allows to keep the file after simulation execution.\\
+
+PRINT\_SCHEDULE definition prints the scheduling at execution time.\\
+DUMP\_SCHEDULE\_STATS prints some miscellanous statistics.\\
+NO\_STATIC\_SCHEDULE disables the static scheduling.
+
+%%%%%%%%%%%%%%%
+%\part{Creating new components for \SYSTEMCASS}
+%%%%%%%%%%%%%%%
+
+%\section{Component description}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\bibliography{./SystemCASS}
+\bibliographystyle{unsrt}
+\end{document}
+

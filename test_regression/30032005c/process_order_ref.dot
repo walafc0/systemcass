@@ -1,0 +1,6 @@
+digraph process_order {
+a_eval_mealy1 -> d_eval_mealy1
+d_eval_mealy1 -> e_eval_mealy1
+e_eval_mealy1 -> b_eval_mealy1
+b_eval_mealy1 -> c_eval_mealy1
+}

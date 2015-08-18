@@ -1,0 +1,34 @@
+How To Use SystemCASS
+=====================
+--   in 4 steps    --
+---------------------
+
+1) Have the right models and the right top-level
+------------------------------------------------
+
+Models should be described as finite state machines.
+See details in SystemCASS documentation.
+
+SOCLIB models work fine.
+
+2) Compile
+----------
+
+You need to set the include path.
+For example :
+g++ -c main.cc -I/users/outil/systemc/systemcass/systemcass/latest/include
+
+3) Link
+-------
+
+You need to set the library path, specify the library and enable the shared library loader.
+For example :
+g++ -o main.x main.o -L/users/outil/systemc/systemcass/systemcass/latest/lib-SLA4x -lsystemc -rdynamic
+
+4) Execution
+------------
+
+Set SYSTEMCASS environment before executing the simulator.
+For exemple :
+export SYSTEMC=/users/outil/systemc/systemcass/systemcass/latest
+

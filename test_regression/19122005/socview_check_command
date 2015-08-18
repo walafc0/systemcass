@@ -1,0 +1,43 @@
+func
+restore test_socview_5.dat
+
+save test_socview_6_bis.dat
+restore test_systemcass_0.dat
+
+save test_socview_1_reloaded.dat
+restore test_systemcass_1.dat
+
+save test_socview_2_reloaded.dat
+restore test_socview_2.dat
+run 1
+save test_socview_3b.dat
+restore test_systemcass_3.dat
+save test_socview_3_reloaded_bis.dat
+restore test_systemcass_2.dat
+
+save test_socview_3_reloaded.dat
+restore test_systemcass_3.dat
+
+save test_socview_4_reloaded.dat
+restore test_systemcass_4.dat
+
+save test_socview_5_reloaded.dat
+restore test_systemcass_5.dat
+
+save test_socview_6_reloaded.dat
+restore test_systemcass_6.dat
+
+save test_socview_7_reloaded.dat
+restore test_systemcass_7.dat
+
+save test_socview_8_reloaded.dat
+restore test_systemcass_8.dat
+
+save test_socview_9_reloaded.dat
+restore test_systemcass_9.dat
+
+save test_socview_10_reloaded.dat
+exit
+
+
+

@@ -1,0 +1,13 @@
+strict digraph module_graph {
+node [shape=box];
+node [name=a_eval_mealy1                      ];
+node [name=b_eval_mealy1                      ];
+node [name=c_eval_mealy1                      ];
+node [name=d_eval_mealy1                      ];
+node [name=e_eval_mealy1                      ];
+node [name=g_eval_mealy1                      ];
+a_eval_mealy1                       -> b_eval_mealy1                      ;
+b_eval_mealy1                       -> c_eval_mealy1                      ;
+a_eval_mealy1                       -> d_eval_mealy1                      ;
+d_eval_mealy1                       -> e_eval_mealy1                      ;
+}

@@ -1,0 +1,13 @@
+strict digraph port_graph {
+b_i1 -> b_o1
+b_i2 -> b_o2
+c_i1 -> c_o1
+d_i1 -> d_o1
+d_i3 -> d_o3
+d_i2 -> d_o2
+e_i1 -> e_o1
+f_i1 -> f_o1
+g_i1 -> g_o1
+g_i2 -> g_o2
+h_i1 -> h_o1
+}

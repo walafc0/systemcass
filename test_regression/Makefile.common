@@ -1,0 +1,50 @@
+
+SYSTEM    = system.cpp
+EXE_SCASS = $(SYSTEM:.cpp=_systemcass.x)
+EXE_SC    = $(SYSTEM:.cpp=_systemc.x)
+OBJ_SC    = $(EXE_SC:.x=.o) $(SRC:.cpp=_systemc.o)
+OBJ_SCASS = $(EXE_SCASS:.x=.o) $(SRC:.cpp=_systemcass.o)
+EXE       = $(EXE_SCASS) $(EXE_SC)
+LOG_SC    = $(EXE_SC:.x=.log)
+LOG_SCASS = $(EXE_SCASS:.x=.log)
+LOG       = $(LOG_SC) $(LOG_SCASS)
+OBJECTS   = $(OBJ_SC) $(OBJ_SCASS)
+
+OK = \033[00;32mOK\033[0m
+KO = \033[00;31mKO\033[0m
+
+
+all: msg $(EXE)
+
+msg:
+	@echo "| Compiling $$(basename $$(pwd))"
+
+
+$(EXE_SC): $(OBJ_SC) $(SYSTEMC_LIB)
+	@echo "| $@"
+	$(SILENCE)$(CXX) -o $@ $(OBJ_SC) $(LFLAGS_SYSTEMC) 2>&1 | $(CPPFILT)
+
+$(EXE_SCASS): $(OBJ_SCASS) $(SYSTEMCASS_LIB)
+	@echo "| $@"
+	$(SILENCE)$(CXX) -o $@ $(OBJ_SCASS) $(LFLAGS_SYSTEMCASS) 2>&1 | $(CPPFILT)
+
+-include Makefile.deps
+
+%_systemc.o: %.cpp 
+	@echo "| $@"
+	$(SILENCE)$(CXX) $(CFLAGS_SYSTEMC) -MM $< > Makefile.deps
+	$(SILENCE)$(CXX) $(CFLAGS_SYSTEMC) -c $< -o $@
+
+%_systemcass.o: %.cpp
+	@echo "| $@"
+	$(SILENCE)$(CXX) $(CFLAGS_SYSTEMCASS) -MM $< > Makefile.deps
+	$(SILENCE)$(CXX) $(CFLAGS_SYSTEMCASS) -c $< -o $@
+
+clean :
+	@echo "| Cleaning $$(basename $$(pwd))"
+	$(SILENCE)rm -f Makefile.deps
+	$(SILENCE)rm -f *.o
+	$(SILENCE)rm -f $(LOG)
+	$(SILENCE)rm -f methodprocess_graph.dot reduced_signal_graph.dot signal_order.txt signal_graph.dot port_graph.dot trace_file.vcd
+	$(SILENCE)rm -f $(EXE) $(OBJECTS) $(ERASE)
+	

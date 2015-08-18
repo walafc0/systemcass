@@ -1,0 +1,57 @@
+
+$timescale
+	1 ps
+$end
+
+$scope module SystemC $end
+$var wire    1  aaa  clk1       $end
+$var wire    1  aab  clk2       $end
+$var wire   32  aac  s25 [31:0]       $end
+$var wire   32  aad  s26 [31:0]       $end
+$var wire   32  aae  s27 [31:0]       $end
+$var wire   32  aaf  s28 [31:0]       $end
+$var wire   32  aag  s29 [31:0]       $end
+$var wire   32  aah  s30 [31:0]       $end
+$var wire   32  aai  s31 [31:0]       $end
+$var wire   32  aaj  s32 [31:0]       $end
+$var wire   32  aak  s33 [31:0]       $end
+$var wire   32  aal  s34 [31:0]       $end
+$upscope $end
+$enddefinitions  $end
+
+$comment
+All initial values are dumped below at time 0 sec = 0 timescale units.
+$end
+
+$dumpvars
+b1 aac
+b1 aad
+b1 aae
+b1 aaf
+b1 aag
+b1 aah
+b0 aai
+b0 aaj
+b0 aak
+b0 aal
+1aaa
+0aab
+$end
+
+#500
+0aaa
+1aab
+
+#1000
+b1111011 aac
+b1111011 aad
+b1111011 aae
+b101000001 aaf
+b101000001 aag
+b101000001 aah
+1aaa
+0aab
+
+#1500
+0aaa
+1aab

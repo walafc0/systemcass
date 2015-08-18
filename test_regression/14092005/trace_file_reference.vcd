@@ -1,0 +1,135 @@
+$end
+
+$scope module SystemC $end
+$var wire    1  aaa  resetn       $end
+$var wire   32  aab  i1 [31:0]       $end
+$var wire   32  aac  o1 [31:0]       $end
+$var wire    1  aad  clk1       $end
+$upscope $end
+$enddefinitions  $end
+
+$comment
+All initial values are dumped below at time 0 sec = 0 timescale units.
+$end
+
+$dumpvars
+0aaa
+b0 aab
+b0 aac
+1aad
+$end
+
+#500
+0aad
+
+#1000
+1aad
+
+#1500
+0aad
+
+#2000
+1aad
+
+#2500
+0aad
+
+#3000
+1aad
+
+#3500
+0aad
+
+#4000
+1aad
+
+#4500
+0aad
+
+#5000
+1aaa
+b1111011 aab
+1aad
+
+#5500
+0aad
+
+#6000
+b0 aab
+b1111011 aac
+1aad
+
+#6500
+0aad
+
+#7000
+b1 aab
+b0 aac
+1aad
+
+#7500
+0aad
+
+#8000
+b10 aab
+b1 aac
+1aad
+
+#8500
+0aad
+
+#9000
+b11 aab
+b10 aac
+1aad
+
+#9500
+0aad
+
+#10000
+b100 aab
+b11 aac
+1aad
+
+#10500
+0aad
+
+#11000
+b101 aab
+b100 aac
+1aad
+
+#11500
+0aad
+
+#12000
+b110 aab
+b101 aac
+1aad
+
+#12500
+0aad
+
+#13000
+b111 aab
+b110 aac
+1aad
+
+#13500
+0aad
+
+#14000
+b1000 aab
+b111 aac
+1aad
+
+#14500
+0aad
+
+#15000
+b1001 aab
+b1000 aac
+1aad
+
+#15500
+0aad

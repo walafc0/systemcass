@@ -1,0 +1,27 @@
+func
+save test_socview_0.dat
+
+save test_socview_1.dat
+
+save test_socview_2.dat
+
+save test_socview_3.dat
+
+save test_socview_4.dat
+
+save test_socview_5.dat
+
+save test_socview_6.dat
+
+save test_socview_7.dat
+
+save test_socview_8.dat
+
+save test_socview_9.dat
+
+save test_socview_10.dat
+restore test_socview_8.dat
+run 2
+save test_socview_10b.dat
+exit
+
